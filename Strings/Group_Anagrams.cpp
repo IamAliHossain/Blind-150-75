@@ -1,5 +1,12 @@
+/*
+    Problem Link : https://leetcode.com/problems/group-anagrams/
+    Problem Name : Group Anagrams
+    Problem Diffi: Medium
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
+
 
 int main(){
     vector<string> strs = {"eat","tea","tan","ate","nat","bat"};

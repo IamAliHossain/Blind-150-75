@@ -41,11 +41,17 @@ void printLL(Node* head){
     }
     cout << endl;
 }
-Node reverseLL(Node* head){
-    
+Node* reverseLL(Node* head){
+    if(head == NULL or head->next == NULL){
+        return head;
+    }
+    Node* newHead = reverseLL(head->next); // 7
+    Node* front = head->next;
+    return front;
 }
 int main(){
     vector<int> arr={4, 2, 5, 1, 7};
     Node* head = convertArray2LL(arr);
+    head = reverseLL(head);
     printLL(head);
 }

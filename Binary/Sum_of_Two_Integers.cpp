@@ -50,17 +50,3 @@ public:
         return sum ;
     }
 };
-
-int main(){
-    int a = 20 , b = 30 ;
-    int sum ;
-    int carry ;
-    int add_sum;
-    while(carry){
-        sum = a ^ b;
-        carry = (a & b) << 1;
-        a = sum;
-        b = carry ;
-    }
-    cout << sum  << endl;
-}

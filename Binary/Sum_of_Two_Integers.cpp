@@ -2,8 +2,8 @@
     Problem Link: https://leetcode.com/problems/sum-of-two-integers/description/
     Problem Name: Sum of Two Integers
     Difficulty  : Medium
-    Time Complexity : O()
-    Space Complexity: O()
+    Time Complexity : O(32)
+    Space Complexity: O(1)
 
 */
 /*

@@ -2,7 +2,7 @@
     Problem Link : https://leetcode.com/problems/course-schedule/
     Problem Name : 207. Course Schedule
     Difficulty   : Medium
-    Time Complexity : O(N+M)
+    Time Complexity : O(N*M)
     Space Complexity : O(N)
     ================================================================================================
 

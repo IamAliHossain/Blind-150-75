@@ -1,14 +1,15 @@
 /*
-    Problem Link : https://leetcode.com/problems/pacific-atlantic-water-flow/description/
-    Problem Name : Pacific Atlantic Water Flow
+    Problem Link : https://leetcode.com/problems/merge-intervals/description/
+    Problem Name : 56. Merge Intervals
     Difficulty   : Medium
     Time Complexity : O(N*long N) + O(N) = O(N*logN);
-    Space Complexity : O(1)
+    Space Complexity : O(N)
 
     ================================================================================================
 
 
-    Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals, and return an array of the non-overlapping intervals that cover all the intervals in the input.
+    Given an array of intervals where intervals[i] = [starti, endi], merge all overlapping intervals,
+    and return an array of the non-overlapping intervals that cover all the intervals in the input.
 
  
     Example 1:

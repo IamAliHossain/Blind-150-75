@@ -3,7 +3,7 @@
     Problem Name : 435. Non-overlapping Intervals
     Difficulty   : Medium
     Time Complexity : O(N*long N) + O(N) = O(N*logN);
-    Space Complexity : O(N)
+    Space Complexity : O(1)
 
     ================================================================================================
 

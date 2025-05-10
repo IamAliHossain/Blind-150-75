@@ -1,6 +1,6 @@
 /*
     Problem Link : https://leetcode.com/problems/longest-increasing-subsequence/description/
-    Problem Name : 300. Longest Increasing Subsequence70. Climbing Stairs
+    Problem Name : 300. Longest Increasing Subsequence
     Difficulty   : Medium
     
     Author : Ali Hossain

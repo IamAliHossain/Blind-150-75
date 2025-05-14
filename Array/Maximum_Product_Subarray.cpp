@@ -31,3 +31,27 @@ public:
         return mxResProd;
     }
 };
+
+/*
+    Time Complexity : O(n) and Space Complexity O(1)
+*/
+
+int main(){
+    // vector<int> nums = {1,0,-1,2,3,-5,-2};
+    vector<int> nums = {-3,0,1,-2};
+    // vector<int> nums = {-2,0,-1};
+    int n = nums.size();
+    int pref = 1, suff = 1, maxi = INT_MIN;
+    for(int i=0; i<n; i++){
+        if(pref == 0){
+            pref = 1;
+        }
+        if(suff == 0){
+            suff = 1;
+        }
+        pref = pref * nums[i];
+        suff = suff * nums[n-i-1];
+        maxi = max(maxi, max(pref, suff));
+    }
+    cout << maxi << endl;
+}

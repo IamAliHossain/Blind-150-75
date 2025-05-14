@@ -49,7 +49,6 @@ public:
             even = palindrom(s, i, i+1); // even length palindrome
             vp.push_back({odd.size(), odd});
             vp.push_back({even.size(), even});
-            
         }
         sort(vp.rbegin(), vp.rend());
         return vp[0].second ;

@@ -1,7 +1,7 @@
 /*
     Problem Link    : https://leetcode.com/problems/binary-tree-maximum-path-sum/description/
     Problem Name    : 124. Binary Tree Maximum Path Sum
-    Difficulty      : Easy
+    Difficulty      : Hard
     Time Complexity : O(N)
     Space Complexity: O(N) for call stack memory use
 

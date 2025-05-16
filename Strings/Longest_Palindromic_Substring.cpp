@@ -22,6 +22,39 @@
 
 */
 
+// Time complexity : O(n * n) + O(n * logn) : O(n ^ 2)
+// Space Complexity: O(n) + O(n) : O(2n)
+// There is also DP solution go below
+
+class Solution {
+public:
+    string palindrom(string s, int left, int right){
+        string t ="";
+        while(left >= 0 and right < s.size() && s[left] == s[right]){
+            left--;
+            right++;
+        }
+        // Taking palindrome string from this range
+        for(int i=left+1; i< right; i++){
+            t+= s[i];
+        }
+        return t;
+    }
+    string longestPalindrome(string s) {
+        vector<pair<int, string>> vp;
+        string odd, even;
+        int n = s.size() ;
+        for(int i=0; i<n; i++){
+            odd = palindrom(s, i, i); // odd length palindrom
+            even = palindrom(s, i, i+1); // even length palindrome
+            vp.push_back({odd.size(), odd});
+            vp.push_back({even.size(), even});
+        }
+        sort(vp.rbegin(), vp.rend());
+        return vp[0].second ;
+    }
+};
+
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -40,7 +73,7 @@ string longestSubstr(string s, int i, int j, int start, int maxLength){
 }
 
 int main(){
-    
+
     int start = 0, maxLength = 1;
     string longestSubstr = s.substr(start, maxLength);
     for(int i=0; i<s.size(); i++){

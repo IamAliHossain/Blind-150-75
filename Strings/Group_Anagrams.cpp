@@ -7,7 +7,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
 int main(){
     vector<string> strs = {"eat","tea","tan","ate","nat","bat"};
     vector<vector<string>> res;

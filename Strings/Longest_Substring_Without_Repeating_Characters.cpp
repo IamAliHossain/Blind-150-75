@@ -1,5 +1,27 @@
+/*
+    Sliding Window or Two pointers technique
+    TC : O(n) , this trevers the string of |s|
+    SC : O(n) , int the worst case we store all characters of the string
+*/
+
 #include<bits/stdc++.h>
 using namespace std;
+
+int maxLen(string s){
+    int n = s.size() ;
+    unordered_map<char, int> hash;
+    int left = 0, right = 0 , longestLen = 0, cnt = 0 ;
+    while(right < n){
+        hash[s[right]]++;
+        while(right - left > hash.size()){
+            hash[s[left]]--;
+            left++;
+        }
+        longestLen = max(longestLen, right + 1 - left);
+        right++;
+    }
+    return longestLen;
+}
 
 int main(){
     // string s = "pwwkew";

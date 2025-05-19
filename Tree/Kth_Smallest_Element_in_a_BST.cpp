@@ -56,8 +56,9 @@ struct TreeNode {
     Time Complexity : O(n * logn) + O(n) : O(n * logn)
     Space Complexity : O(n) + O(n) : O(n)
 
-    There is also a follow up question to optimize the time complexity
+    There is also a follow up question to optimize the time complexity go next approach
 */
+// Aproach 1
 class Solution {
 public:
     vector<int>solve(TreeNode* root, vector<int> &v){
@@ -71,6 +72,26 @@ public:
         vector<int> v;
         solve(root, v);
         sort(v.begin(), v.end());
+        return v[k-1];
+    }
+};
+
+// Approach 2 ---> Inorder Traversal wil auto sort the BST
+// Time Complexity : O(n) 
+// Space Complexity : O(n)
+class Solution {
+public:
+    vector<int>solve(TreeNode* root, vector<int> &v){
+        if(root == NULL) return {};
+        // Inorder Traversal Left -> Root -> Right
+        solve(root->left, v); // Left
+        v.push_back(root->val); // Root
+        solve(root->right, v); // Right
+        return v;
+    }
+    int kthSmallest(TreeNode* root, int k) {
+        vector<int> v;
+        solve(root, v);
         return v[k-1];
     }
 };

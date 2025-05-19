@@ -2,8 +2,8 @@
     Problem Link    : https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/
     Problem Name    : 208. Implement Trie (Prefix Tree)
     Difficulty      : Medium
-    Time Complexity : O(height)
-    Space Complexity: O(1) 
+    Time Complexity : 
+    Space Complexity: 
 
     Author : Ali Hossain
     Date : 19-05-2025

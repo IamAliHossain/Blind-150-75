@@ -70,3 +70,33 @@ public:
         return root;
     }
 };
+
+
+/* BFS solution */
+
+class Solution {
+public:
+    TreeNode* bfs(TreeNode* root){
+        if(root == NULL){
+            return NULL;
+        }
+        queue<TreeNode*> q;
+        q.push(root);
+        while(q.size()){
+            TreeNode* curr = q.front();
+            q.pop();
+            
+            TreeNode* temp = curr->left;
+            curr->left = curr->right;
+            curr->right = temp;
+
+            if(curr->left != NULL) q.push(curr->left);
+            if(curr->right != NULL) q.push(curr->right);
+        }
+
+        return root;
+    }
+    TreeNode* invertTree(TreeNode* root) {
+        return bfs(root);
+    }
+};

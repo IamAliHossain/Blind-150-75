@@ -2,8 +2,8 @@
     Problem Link    : https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/description/
     Problem Name    : 105. Construct Binary Tree from Preorder and Inorder Traversal
     Difficulty      : Medium
-    Time Complexity : 
-    Space Complexity: O() for call stack memory use
+    Time Complexity : O(n)
+    Space Complexity: O(n) for using a map + for call stack memory use
 
     Author : Ali Hossain
     Date : 18-05-2025
@@ -68,7 +68,20 @@ public:
         int inRoot = inMap[root->val]; // inorder er root
         int inLeft = inRoot - inStart; // inorder er left nums
 
+        /*
+         now build left and right nodes of root recursively
+         Left Node of the root
+         preorder array theke Left Node range = (preStart+1) TO (preStart+inLeft)   
+         inorder array theke Left Node range = inStart TO inRoot 
+
+        */
         root->left = solve(preorder, preStart+1, preStart+inLeft, inorder, inStart, inRoot-1, inMap);
+        
+        /* 
+        Right node of root
+        preorder array theke Right Node range = (preStart+inLeft+1) TO preEnd  
+        inorder array theke Right Node range = (inRoot+1) TO inEnd
+        */
         root->right = solve(preorder, preStart+inLeft+1, preEnd, inorder, inRoot+1, inEnd, inMap);
         
         return root;

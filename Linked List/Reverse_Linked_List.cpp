@@ -49,6 +49,34 @@ Node* reverseLL(Node* head){
     Node* front = head->next;
     return front;
 }
+
+//another way of reverse a Linked List
+
+//Definition for singly-linked list.
+ struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+ 
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* curr = head;
+        ListNode* prev = NULL;
+        ListNode* nextNode ;
+        while(curr != NULL){
+            nextNode = curr->next;
+            curr->next = prev; // this line make link to backwards to reverse the list & cut forward link off
+            prev = curr;
+            curr = nextNode ; // this line for while loop only go to the last node of list
+        }
+        return prev; // returning 'prev' since head stored at prev node now from while loop
+    }
+};
+
 int main(){
     vector<int> arr={4, 2, 5, 1, 7};
     Node* head = convertArray2LL(arr);

@@ -39,12 +39,26 @@ class Solution{
     /*====================================================================================
     ==============  Optimized code using dp solution(memoiation technique)  ==============
     ======================================================================================*/
+/*
+    Memoization Technique :
 
+    dp array এর dimension নির্ভর করে হচ্ছে function কয়টা arguments এর উপর নির্ভর করছে তার উপর
+    এখানে index & prevIndex এই 2 টার উপর নির্ভর করে তাই 2D DP হবে N * prevIndex অতএব dp[N][N+1]
+
+    To avoid TLE of previous solution now I'll use memoization or DP technique
+    Where TC : O(N * N) traversing through the 'nums' array & 
+    SC : O(N) auxilary stack space + O(N * N) for using dp array so overrall SC : O(N * N)
+
+*/
     //      Time Complexity : O(n * n) = O(n^2)
-    //      Space Complexity : O(N) 
+    //      Space Complexity : O(N*N) 
 
     int LIS(int ind, int prev_ind, vector<int> &arr, vector<vector<int>> &dp, int n){
+        
+        // if index is in out of the array it won't return any length means zero wil be returned 
         if(ind == n) return 0;
+
+        // since prevInd starts from -1 so we will add +1 with prevInd
         if(dp[ind][prev_ind+1] != -1) return dp[ind][prev_ind+1];
 
         int lenByNotTaking, lenByTaking , maxLen;

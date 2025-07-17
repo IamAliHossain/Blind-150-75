@@ -2,8 +2,8 @@
     Problem Link : https://leetcode.com/problems/word-break/description/
     Problem Name : 139. Word Break
     Difficulty   : Medium
-    Time Complexity : O(n * n * n) = O(n ^ 3)
-    Space Complexity: O(n * n + k * m) = O(n ^ 2 + k * m)
+    Time Complexity : 
+    Space Complexity: 
     Author : Ali Hossain
     Date : 11-05-2025
 

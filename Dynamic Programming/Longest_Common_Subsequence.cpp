@@ -11,12 +11,14 @@
 
 #include<bits/stdc++.h>
 using namespace std;
+/*-------------------------------------Recursive Solution Start-------------------------------------------*/
 
 // This code is done with just recursive hence TC = O(2^n * 2^m) and brings TLE
     // To optimize the code we apply dp here, so see the next part
     //      Time Complexity : O(2^n * 2^m) Because eikhane 2 ta string er recursion cholche
-    //      Space Complexity : O(1) 
-/* 
+    //      Space Complexity : O(N + M) 
+
+// Recursive sol1
 class Solution {
     public:
     int LCS(string s, string t, int sn, int tn){
@@ -40,12 +42,74 @@ class Solution {
     }
 };
 
-*/
-// This code is done using dp to reduce TC 
-    // To optimize the code we apply dp here, so see the next part
-    //      Time Complexity : O(n * m) Because eikhane 2 ta string er recursion cholche
-    //      Space Complexity : O(n * m) + (n + m)(auxilary space at stack)
+// Recursive sol2
 
+/*
+    this sol give TLE because here TC : O(2^N)*O(2^M) == O(2^(N + M)) and  SC : O(N) + O(M)
+
+    That's why we need dp solution & we will in the next. Let's see TLE verdict now (-_-)
+*/
+class Solution {
+public:
+    int lenOfLCS(int t1Ind, int t2Ind, string &text1, string &text2){
+        // base case
+        if(t1Ind == text1.size() || t2Ind == text2.size()) return 0;
+        // characters matched
+        if(text1[t1Ind] == text2[t2Ind]){
+            return 1 + lenOfLCS(t1Ind+1, t2Ind+1, text1, text2);
+        }
+        // here characters not mathced
+        return 0 + max(lenOfLCS(t1Ind+1, t2Ind, text1, text2),lenOfLCS(t1Ind, t2Ind+1, text1, text2));
+    }
+    int longestCommonSubsequence(string text1, string text2) {
+        return (lenOfLCS(0, 0, text1, text2));
+    }
+};
+
+
+/*-------------------------------------Recursive Solution End-------------------------------------------*/
+
+
+
+/*-------------------------------------Memoization Solution Start-------------------------------------------*/
+
+/*
+     This code is done using dp to reduce TC 
+     To optimize the code we apply dp here
+
+     dp array এর dimension নির্ভর করে হচ্ছে function কয়টা arguments এর উপর নির্ভর করছে তার উপর
+    এখানে t1Ind & t2Ind এই 2 টার উপর নির্ভর করে তাই 2D DP হবে N * prevIndex অতএব dp[N][M]
+
+          Time Complexity : O(n * m) Because eikhane 2 ta string er recursion cholche
+         Space Complexity : O(n * m) + (n + m)(auxilary space at stack)
+
+
+*/
+// You can see any of the solution below
+// sol1 in memoization
+class Solution {
+public:
+    int lenOfLCS(int t1Ind, int t2Ind, string &text1, string &text2, vector<vector<int>> &dp){
+        // base case
+        if(t1Ind == text1.size() || t2Ind == text2.size()) return 0;
+        if(dp[t1Ind][t2Ind] != -1) return dp[t1Ind][t2Ind];
+        // characters matched
+        if(text1[t1Ind] == text2[t2Ind]){
+            return dp[t1Ind][t2Ind] = 1 + lenOfLCS(t1Ind+1, t2Ind+1, text1, text2, dp);
+        }
+        // here characters not mathced
+        return dp[t1Ind][t2Ind] = 0 + max(lenOfLCS(t1Ind+1, t2Ind, text1, text2, dp),lenOfLCS(t1Ind, t2Ind+1, text1, text2, dp));
+
+        
+    }
+    int longestCommonSubsequence(string text1, string text2) {
+        int n = text1.size();
+        int m = text2.size();
+        vector<vector<int>> dp(n, vector<int>(m, -1));
+        return lenOfLCS(0, 0, text1, text2, dp);
+    }
+};
+// sol2 in memoization
 class Solution {
     public:
     int LCS(vector<vector<int>> &dp, string &s, string &t, int sn, int tn){
@@ -67,6 +131,10 @@ class Solution {
     }
 };
 
+/*-------------------------------------Memoization Solution End-------------------------------------------*/
+
+
+/*-------------------------------------Iterative Solution Start-------------------------------------------*/
 // This code is done with tabulation so TC = O(n * m) and SC : O(n * m) + (n + m)(auxilary space at stack)
     // To optimize the space we apply tabulation(Bottom-up) aproach  here, so see the next part
     //      Time Complexity : O(n * m) Because eikhane 2 ta string er recursion cholche
@@ -76,18 +144,7 @@ class Solution {
     // Incomplete code do not take this part
 class Solution{
 
-    int LCS(string &s, string &t, int n, int m, vector<vector<int>> &dp){
-        if(n < 0 || m < 0) return 0;
-        if(dp[n][m] != -1) return dp[n][m];
-        if(s[n] == t[m]){
-            return dp[n][m] =  LCS(s, t, n-1, m-1, dp) + 1;
-        }
-        else{
-            return dp[n][m] = max(LCS(s, t, n-1, m, dp), LCS(s, t, n, m-1, dp));
-        }
-        return dp[n][m];
-    }
-
+    
     int longestCommonSubsequence(string s, string t){
         int n = s.length() - 1;
         int m = t.length() - 1;

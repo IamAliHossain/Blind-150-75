@@ -45,6 +45,34 @@ using namespace std;
     N * Target। 
     অতএব dp[N][Target+1]
 
+    🧠 Gist: Why take/notTake Doesn’t Work When Order Matters
+            take/notTake is good for:
+            Problems where order doesn’t matter
+            Like subset sum or combination problems (e.g., 2 + 1 same as 1 + 2)
+            When order does matter (like in Combination Sum IV):
+            You must try all elements at every step
+            Use a loop over the entire array inside your recursion
+
+            ⚠️ What Happens If You Use take/notTake in Order-Sensitive Problems?
+            It only explores a fixed path (e.g., always left to right)
+
+            It misses permutations like [2, 1] if it already tried [1, 2]
+
+            Or may double-count paths depending on structure
+
+            ✅ Correct Way (Order Matters):
+            Use loop-based recursion
+            For each number in nums, try it and recurse
+            This explores all possible ordered sequences
+
+🔁 So, when should you use take/notTake?
+
+| Approach             | When to Use                                   | Order Matters? | Example Problem                |
+| -------------------- | -------------------------------------------- | --------------  | -----------------------------  |
+| `take/notTake`       | When building combinations/subsets from left | ❌ No          | Subset Sum, Combination Sum I  |
+| Loop over all `nums` | When order matters and repetition allowed    | ✅ Yes         | Combination Sum IV             |
+
+
 */
 class Solution {
 public:

@@ -14,17 +14,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-/*  
-    Time Complexity analysis : 
-    O(n^2) pairs (start, end) and O(n) time to create substrings
-    → O(n^2 * n) = O(n^3)
-
-    🧠 Space Complexity
-        dp array: O(n^2) space.
-        Recursion call stack: maximum depth = O(n) (if each recursive call goes to end+1 only).
-        Dictionary se: size = O(k * m), where k is number of words and m is average length of words.
-*/
-
 // Recursive solution 
 /*
     N = s.length(), M = wordtDict.size() = k * m ; where k = wordDict[i].size() & m = wordDict.size();
@@ -130,6 +119,17 @@ public:
 };
 
 // solution 2
+/*  
+    Time Complexity analysis : 
+    O(n^2) pairs (start, end) and O(n) time to create substrings
+    → O(n^2 * n) = O(n^3)
+
+    🧠 Space Complexity
+        dp array: O(n^2) space.
+        Recursion call stack: maximum depth = O(n) (if each recursive call goes to end+1 only).
+        Dictionary se: size = O(k * m), where k is number of words and m is average length of words.
+*/
+
 class Solution {
 public:
     bool solve(int start, int end, string &s, unordered_set<string> &se, vector<vector<int>> &dp){

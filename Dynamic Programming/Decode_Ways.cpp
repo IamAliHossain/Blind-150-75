@@ -12,7 +12,19 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+ /*     
+    Memoization Technique
+    
+    N = s.size();
+    TC : O(N)
+    SC : O(N) for dp array
 
+
+    dp array এর dimension নির্ভর করে হচ্ছে function কয়টা arguments এর উপর নির্ভর করছে তার উপর
+    এখানে only index এই 1 টার উপর নির্ভর করে তাই 1D DP হবে। index can be N | 
+    অতএব dp[N]
+    
+*/
 
 class Solution{ 
     public:    

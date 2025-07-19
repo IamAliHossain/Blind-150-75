@@ -47,16 +47,17 @@ using namespace std;
 
 
 /*
-Time Complexity:
-The function finds the longest repeating character replacement using the sliding window technique.
 
-Each character is added once and removed once from the unordered_map named hash.
-The inner while loop runs only when duplicates are found, and l only moves forward.
+    Time Complexity:
+    The function finds the longest repeating character replacement using the sliding window technique.
 
-So in total, both pointers (l, r) traverse the string once, giving:
+    Each character is added once and removed once from the unordered_map named hash.
+    The inner while loop runs only when duplicates are found, and l only moves forward.
 
-✅ Time Complexity: O(n) where n = s.size()
-✅ Space: O(26) for 26 atmost characters so O(1) eventually
+    So in total, both pointers (l, r) traverse the string once, giving:
+
+    ✅ Time Complexity: O(n) where n = s.size()
+    ✅ Space: O(26) for 26 atmost characters so O(1) eventually
 
 */
 

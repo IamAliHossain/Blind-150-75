@@ -2,8 +2,8 @@
     Problem Link : https://leetcode.com/problems/course-schedule/
     Problem Name : 207. Course Schedule
     Difficulty   : Medium
-    Time Complexity : O(N*M)
-    Space Complexity : O(N)
+    Time Complexity : 
+    Space Complexity :
     ================================================================================================
 
     There are a total of numCourses courses you have to take, labeled from 0 to numCourses - 1. You are given an array prerequisites where prerequisites[i] = [ai, bi] indicates that you must take course bi first if you want to take course ai.
@@ -46,6 +46,12 @@
 
     1->2 2->3 3->1 : this will make a directed graph which has a cycle, so in this case 
     we can't finish all the courses
+
+    N = nodes(numCourse)
+    E = edges(prerequisite.size())
+    TC : O(N + E)
+    SC : O(N) for visited + O(N) for pathVisited + O(N + E) for adj list
+    so SC : O(N + E)
     
 
 */
@@ -109,6 +115,13 @@ public:
 #include<bits/stdc++.h>
 using namespace std;
 
+/*
+    N = nodes(numCourse)
+    E = edges(prerequisite.size())
+    TC : O(N + E)
+    SC : O(N) for visited + O(N) for pathVisited + O(N + E) for adj list
+    so SC : O(N + E)
+*/
 
 class Solution {
 public:
@@ -117,10 +130,8 @@ public:
         vector<int> indegree(numCourses);
 
         for(auto &courses : prerequisites){
-            int courseToTake = courses[0];
-            int prereq = courses[1];
-            graph[prereq].push_back(courseToTake);
-            indegree[courseToTake]++;  // Increment indegree of the courseToTake
+            graph[courses[1]].push_back(courses[0]);
+            indegree[courses[0]]++;  // Increment indegree of the courseToTake
         }
         queue<int> noPrereqCourses;
         for(int i=0; i<numCourses; i++){

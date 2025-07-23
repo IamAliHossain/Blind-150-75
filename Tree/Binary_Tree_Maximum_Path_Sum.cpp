@@ -10,7 +10,9 @@
 
 ========================================================================================================
     
-    A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
+    A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the 
+    sequence has an edge connecting them. A node can only appear in the sequence at most once. 
+    Note that the path does not need to pass through the root.
 
     The path sum of a path is the sum of the node's values in the path.
 
@@ -33,7 +35,7 @@
 
     Constraints:
 
-    The number of nodes in the tree is in the range [1, 3 * 104].
+    The number of nodes in the tree is in the range [1, 3 * 10^4].
     -1000 <= Node.val <= 1000
 
 */
@@ -60,12 +62,13 @@ public:
         if(root == NULL){
             return 0;
         }
-        // if any is negative then make that 0 hence 0 is used in max funciton
+        // if any is negative then make that 0 means we are skiping that node
         int leftNode = max(0, sum(root->left, maxi));
         int rightNode = max(0, sum(root->right, maxi)); 
 
         // maxi will record the max value of a path from a node 
-        maxi = max(maxi, ( root->val + leftNode + rightNode ));
+        int currSum = root->val + leftNode + rightNode ;
+        maxi = max(maxi, currSum);
         
         //this line for taking maximum node either left path or right path from a node
         return root->val + max(0, max(leftNode, rightNode));

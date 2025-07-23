@@ -2,14 +2,51 @@
     Problem Link : https://leetcode.com/problems/two-sum/description/
     Problem Name : Two Sum
     Difficulty   : Easy
-    Time Complexity : O(N * log * N) -> for sorting operation
-    Space Complexity : O(N)
+    Time Complexity : 
+    Space Complexity :
 
 */
 
 #include<bits/stdc++.h>
 using namespace std;
+// Here added two solutions
 
+// most optimal solution
+/*
+    TC : O(N)
+    SC : O(N)
+*/
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        unordered_map<int, vector<int>> mp;
+        for(int i=0; i<nums.size(); i++){
+            mp[nums[i]].push_back(i);
+        }
+        vector<int> v;
+        for(int i=0; i<nums.size(); i++){
+            int need = target - nums[i];
+            if(mp[need].size()){
+                if(need != nums[i]){
+                    v.push_back(i);
+                    v.push_back(mp[need][0]);
+                    return v;
+                }
+                else{
+                    if(mp[need].size() > 1){
+                        v.push_back(i);
+                        v.push_back(mp[need][1]);
+                        return v;
+                    }
+                }
+            }
+        } 
+        return v;
+    }
+};
+
+// TC : O(n * logn)
+// SC : O(N)
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
